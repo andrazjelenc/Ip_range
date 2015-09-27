@@ -1,7 +1,9 @@
 <?php
 
+//array where all the ranges will be saved
 $output = array();
 
+//lists are in the txt folder
 $files = scandir("./txt");
 
 foreach ($files as $filename) 
@@ -10,6 +12,7 @@ foreach ($files as $filename)
 	{
 		continue;
 	}
+	//get content of one list
 	$filename = './txt/'.$filename;
 	$content = file_get_contents($filename);
 	$content = explode("\n",$content);
@@ -21,6 +24,8 @@ foreach ($files as $filename)
 		{
 			continue;
 		}
+		
+		//skip first line 
 		if($line[0] == '#')
 		{
 			continue;
@@ -29,9 +34,21 @@ foreach ($files as $filename)
 		$output[]  = $range;
 	}
 }
+
+//sort array like human
 natsort($output);
-foreach($output as $ip)
+
+//echo everything but last two line
+$n = count($output);
+foreach($output as $range)
 {
-	echo $ip."\n";
+	$n--;
+	if($n == 2)
+	{
+		echo $range;
+		break;
+	}
+	echo $range."\n";
+	
 }
 ?>
