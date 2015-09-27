@@ -74,7 +74,7 @@ foreach($content as $line)
 	//echo $range."\r\n";
 	$inserted = false;
 	
-	$startIndex = count($output) - 100;
+	$startIndex = count($output) - 50;
 	if($startIndex < 0)
 	{
 		$startIndex = 0;
