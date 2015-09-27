@@ -26,7 +26,12 @@ foreach ($files as $filename)
 			continue;
 		}
 		$range = explode(':',$line)[1];
-		echo $range."\n";
+		$output[]  = $range;
 	}
+}
+natsort($output);
+foreach($output as $ip)
+{
+	echo $ip."\n";
 }
 ?>
